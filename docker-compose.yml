@@ -22,14 +22,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
-    # volumes:
-    #   - .:/app
+    volumes:
+      - .:/app
     tty: true
     env_file:
       - .go_env
     environment:
       - TZ=Asia/Tokyo
-    command: ["/app/go_todo_api"]
+    # command: ["/app/go_todo_api"]
     depends_on:
       - go-todo-mysql
 
