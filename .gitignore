@@ -26,3 +26,4 @@ go.work.sum
 
 tmp/
 build/
+pre_cmd.txt
