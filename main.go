@@ -3,6 +3,8 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"go-todo-api/controllers"
+	"go-todo-api/models"
 	"log"
 	"net/http"
 
@@ -15,6 +17,11 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.Close()
+
+	todoModel := models.NewTodoModel(db)
+	todoController := controllers.NewTodoController(todoModel)
+
+	http.HandleFunc("/todos", todoController.GetTodos)
 
 	fmt.Println("Starting server on :8080")
 
